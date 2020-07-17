@@ -45,7 +45,7 @@ public class Index {
 	
 	public static void buyBread() {
 		int choseMenuOption = -1;
-		Integer arr[] = {1, 2, 3, 4};
+		Integer arr[] = {1, 2, 3, 4, 5};
 		ArrayList<Integer> eMenuOption = new ArrayList<>(Arrays.asList(arr));
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -90,8 +90,11 @@ public class Index {
 				System.out.println(breadCa.toString());
 				break;
 			case 5:
-		        System.out.println("ban mua banh my tu chon");
-		        break;
+				BanhMy breadTuChon = new BanhTuChon();
+				breadTuChon.buy();
+				System.out.println("Ban da mua thanh cong!");
+				System.out.println(breadTuChon.toString());
+				break;
 		     }
 		} catch (IOException e) {
 			System.out.println("Error - chon loai banh my: "+e);

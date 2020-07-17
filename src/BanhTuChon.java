@@ -1,108 +1,45 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BanhMy extends Product{
-
-	public BanhMy() {
-		this.setListMaterial(new ArrayList<Material>());
-		this.setNameProduct("Banh_my_khong");
-		Material tempMaterial = new Material("Banh_my_khong", 8);
-		ArrayList<Material> tempListMaterial = new ArrayList<Material>();
-		tempListMaterial.add(tempMaterial);
-		this.setListMaterial(tempListMaterial);
-		LocalDateTime now = LocalDateTime.now();  
-		this.setDateTime(now);	
-	}
-	
-	public String getListStringMaterials() {
-		ArrayList<Material> tempListMaterial = this.getListMaterial();
-		if(tempListMaterial!=null) {
-			String stringTempMaterial = this.getMaterials();
-			for (Material tempMaterial : tempListMaterial) {
-				stringTempMaterial += (", "+tempMaterial.getName());
-			}
-			return stringTempMaterial;
-		}
-		return this.getMaterials();
-	}
-	
-	public boolean checkMaterial(Material material) {
-		if(this.getListMaterial()!=null) {
-			for(Material materialCheck : this.getListMaterial()) {
-				if(materialCheck.getName().equals(material.getName())) 
-					return true;
-			}
-			return false;
-		}
-		return false;
-	}
-	
-	public int getPriceMaterial() {
-		ArrayList<Material> tempListMaterial = this.getListMaterial();
-		int tempPrice = this.getPrice();
-		if(tempListMaterial!=null) {
-			for (Material tempMaterial : tempListMaterial) {
-				tempPrice += tempMaterial.getPrice();
-			}
-			return tempPrice;
-		}
-		return tempPrice;
+public class BanhTuChon extends BanhMy{
+	public BanhTuChon() {
+		this.setNameProduct("Banh_my_tu_chon");
+		this.setPrice(0);
 	}
 	
 	public void buy() {
-		int choseMenuOption1 = -1;
-		Integer arr[] = {1, 2};
-		ArrayList<Integer> eMenuOption = new ArrayList<>(Arrays.asList(arr));
+		int choseMenuOption = -1;
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			do {
+				this.addMaterial();
 				System.out.println("---------------------------------------------");
-				System.out.println("Ban co muon them thanh phan khac khong: ");
+				System.out.println("Ban co muon mua them khong?");
 				System.out.println("1. Co");
 				System.out.println("2. Khong");
+
 				System.out.println("---------------------------------------------");
 				System.out.print("\n\nMoi chon: ");
+
+				choseMenuOption = Integer.parseInt(br.readLine());
 				
-				choseMenuOption1 = Integer.parseInt(br.readLine());
-			} while (!eMenuOption.contains(choseMenuOption1));
-			
-			//Add material
-			if(choseMenuOption1==1) {
-				int choseOption2 = 0;
-				while(choseOption2 == 0){
-					this.addMaterial();
-					System.out.println("---------------------------------------------");
-					System.out.println("Ban co muon them nua khong: ");
-					System.out.println("1. Co");
-					System.out.println("2. Khong");
-					System.out.println("---------------------------------------------");
-					System.out.print("\n\nMoi chon: ");
-					int tempChose = Integer.parseInt(br.readLine());
-					if(tempChose != 1 ) {
-						choseOption2 = 1; 
-					}
-				}	
-			}
+			} while (choseMenuOption != 2);
 		} catch (IOException e) {
-			System.out.println("Error: "+e);
+			System.out.println("Error - chon loai banh my: "+e);
 		}
 	}
 	
-	@Override
-	
 	public void addMaterial() {
 		int choseMenuOption = -1;
-		Integer arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+		Integer arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		ArrayList<Integer> eMenuOption = new ArrayList<>(Arrays.asList(arr));
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			do {			
-				System.out.println("Ban them mon nao? ");
+				System.out.println("Ban muon chon mon nao? ");
 				System.out.println("1. Trung chien");
 				System.out.println("2. Cha bong");
 				System.out.println("3. Cha lua");
@@ -112,13 +49,13 @@ public class BanhMy extends Product{
 				System.out.println("7. Ca hoi");
 				System.out.println("8. Rau");
 				System.out.println("9. Gia vi");
+				System.out.println("10. Banh my khong");
 				choseMenuOption = Integer.parseInt(br.readLine());
 			} while (!eMenuOption.contains(new Integer(choseMenuOption)));
 			
 			//Add material
 			ArrayList<Material> temp;
 			Material materialNew;
-			int priceTemp = 0;
 			switch (choseMenuOption) {
 			case 1:
 				materialNew = new Material("Trung_chien", 5 );
@@ -131,12 +68,7 @@ public class BanhMy extends Product{
 				}
 				temp.add(materialNew);
 				this.setListMaterial(temp);
-				this.setMaterials(this.getMaterials().concat(", Trung_chien"));
-				priceTemp = this.getPrice();
-				this.setPrice(priceTemp+=5);
-			
 				break;
-				
 				
 			case 2:
 				materialNew = new Material("Cha_bong", 5 );
@@ -144,14 +76,10 @@ public class BanhMy extends Product{
 					if(this.checkMaterial(materialNew)) break;
 					temp = new ArrayList<Material>(this.getListMaterial());
 				}else {
-					
 					temp = new ArrayList<Material>();
 				}
 				temp.add(materialNew);
 				this.setListMaterial(temp);
-				this.setMaterials(this.getMaterials().concat(", Cha_bong"));
-				priceTemp = this.getPrice();
-				this.setPrice(priceTemp+=5);
 				break;
 				
 			case 3:
@@ -165,9 +93,6 @@ public class BanhMy extends Product{
 				}
 				temp.add(materialNew);
 				this.setListMaterial(temp);
-				this.setMaterials(this.getMaterials().concat(", Cha_lua"));
-				priceTemp = this.getPrice();
-				this.setPrice(priceTemp+=5);
 				break;
 				
 			case 4:
@@ -181,10 +106,6 @@ public class BanhMy extends Product{
 				}
 				temp.add(materialNew);
 				this.setListMaterial(temp);
-				this.setMaterials(this.getMaterials().concat(", Cha_bo"));
-				priceTemp = this.getPrice();
-				this.setPrice(priceTemp+=5);
-				
 				break;
 				
 			case 5:
@@ -198,9 +119,6 @@ public class BanhMy extends Product{
 				}
 				temp.add(materialNew);
 				this.setListMaterial(temp);
-				this.setMaterials(this.getMaterials().concat(", Nem"));
-				priceTemp = this.getPrice();
-				this.setPrice(priceTemp+=4);
 				break;
 				
 			case 6:
@@ -214,9 +132,6 @@ public class BanhMy extends Product{
 				}
 				temp.add(materialNew);
 				this.setListMaterial(temp);
-				this.setMaterials(this.getMaterials().concat(", Thit"));
-				priceTemp = this.getPrice();
-				this.setPrice(priceTemp+=8);
 				break;
 
 			case 7:
@@ -230,9 +145,6 @@ public class BanhMy extends Product{
 				}
 				temp.add(materialNew);
 				this.setListMaterial(temp);
-				this.setMaterials(this.getMaterials().concat(", Ca_hoi"));
-				priceTemp = this.getPrice();
-				this.setPrice(priceTemp+=5);
 				break;
 
 			case 8:
@@ -246,9 +158,6 @@ public class BanhMy extends Product{
 				}
 				temp.add(materialNew);
 				this.setListMaterial(temp);
-				this.setMaterials(this.getMaterials().concat(", Rau"));
-				priceTemp = this.getPrice();
-				this.setPrice(priceTemp+=1);
 				break;
 
 			case 9:
@@ -262,12 +171,18 @@ public class BanhMy extends Product{
 				}
 				temp.add(materialNew);
 				this.setListMaterial(temp);
-				this.setMaterials(this.getMaterials().concat(", Gia_vi"));
-				priceTemp = this.getPrice();
-				this.setPrice(priceTemp+=1);
 				break;
 				
 			default:
+				materialNew = new Material("Banh_my_khong", 8 );
+				if(this.getListMaterial() != null) {
+					if(this.checkMaterial(materialNew)) break;
+					temp = new ArrayList<Material>(this.getListMaterial());
+				}else {
+					temp = new ArrayList<Material>();
+				}
+				temp.add(materialNew);
+				this.setListMaterial(temp);
 				break;
 			}
 			
@@ -278,19 +193,4 @@ public class BanhMy extends Product{
 
 	}
 
-	@Override
-	
-	public void delMaterial() {
-	
-	}
-
-	@Override
-	public String toString() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		return "Name product: "+ this.getNameProduct() + "  Materials: ["+ this.getListStringMaterials()+"]" + " Price: " + this.getPriceMaterial()+ "k  Time: " + dtf.format(this.getDateTime());
-	}
-
-	
-	
-	
 }

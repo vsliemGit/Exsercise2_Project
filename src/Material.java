@@ -4,6 +4,10 @@ public class Material {
 	private int price;
 	
 	//Constructor:
+	public Material() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Material(String name, int price) {
 		super();
 		this.name = name;

@@ -84,8 +84,11 @@ public class Index {
 				System.out.println(breadThit.toString());
 				break;
 			case 4:
-			   System.out.println("ban mua banh my ca");
-			   break;
+				BanhMy breadCa = new BanhMyCa();
+				breadCa.buy();
+				System.out.println("Ban da mua thanh cong!");
+				System.out.println(breadCa.toString());
+				break;
 			case 5:
 		        System.out.println("ban mua banh my tu chon");
 		        break;

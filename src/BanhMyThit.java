@@ -14,10 +14,50 @@ public class BanhMyThit extends BanhMy{
 		Material tempMaterial = new Material("Thit", 8);
 		ArrayList<Material> tempListMaterial = new ArrayList<Material>();
 		tempListMaterial.add(tempMaterial);
+		tempMaterial = new Material("Rau", 1);
+		tempListMaterial.add(tempMaterial);
+		tempMaterial = new Material("Gia_vi", 1);
+		tempListMaterial.add(tempMaterial);
+		//Chose 'Cha_lua' and 'Cha_bo'
+		tempListMaterial.add(choseCha());
 		this.setListMaterial(tempListMaterial);
 		//Set time
 		LocalDateTime now = LocalDateTime.now();  
 		this.setDateTime(now);
+	}
+	
+	
+	public Material choseCha() {
+		Material cha = new Material();
+		int choseMenuOption = -1;
+		Integer arr[] = {1, 2};
+		ArrayList<Integer> eMenuOption = new ArrayList<>(Arrays.asList(arr));
+		
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			do {
+				System.out.println("---------------------------------------------");
+				System.out.println("Ban an 'Cha lua' hay 'Cha bo' vay? ");
+				System.out.println("1. Cha lua");
+				System.out.println("2. Cha bo");
+
+				System.out.println("---------------------------------------------");
+				System.out.print("\n\nMoi chon: ");
+
+				choseMenuOption = Integer.parseInt(br.readLine());
+				
+			} while (!eMenuOption.contains(choseMenuOption));
+			
+			//Exit if chose option Exit
+			if (choseMenuOption == 1) {
+				cha = new Material("Cha_lua", 5);
+			}else {
+				cha = new Material("Cha_bo", 5);
+			}
+		} catch (IOException e) {
+			System.out.println("Error - chon loai banh my: "+e);
+		}
+		return cha;
 	}
 
 	@Override
@@ -82,8 +122,6 @@ public class BanhMyThit extends BanhMy{
 				System.out.println("4. Cha bo");
 				System.out.println("5. Nem");
 				System.out.println("6. Ca hoi");
-				System.out.println("7. Rau");
-				System.out.println("8. Gia vi");
 				choseMenuOption = Integer.parseInt(br.readLine());
 			} while (!eMenuOption.contains(new Integer(choseMenuOption)));
 			

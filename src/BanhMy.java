@@ -287,6 +287,7 @@ public class BanhMy extends Product{
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 		return "Name product: "+ this.getNameProduct() + "  Materials: ["+ this.getListStringMaterials()+"]" + " Price: " + this.getPriceMaterial()+ "k  Time: " + dtf.format(this.getDateTime());
 	}
+
 	
 	
 	

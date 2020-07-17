@@ -5,15 +5,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BanhMyTrung extends BanhMy{
-	public BanhMyTrung() {
-		
+public class BanhMyCa extends BanhMy{
+	public BanhMyCa() {
 		super();
 		//Set name 
-		this.setNameProduct("Banh_my_trung");
-		
+		this.setNameProduct("Banh_my_ca");
 		//Set material
-		Material tempMaterial = new Material("Trung_chien", 5);
+		Material tempMaterial = new Material("Cha_hoi", 5);
 		ArrayList<Material> tempListMaterial = new ArrayList<Material>();
 		tempListMaterial.add(tempMaterial);
 		tempMaterial = new Material("Rau", 1);
@@ -72,6 +70,8 @@ public class BanhMyTrung extends BanhMy{
 					this.setListMaterial(tempListMaterial);
 					this.buy();
 				}
+				
+				
 
 			} catch (IOException e) {
 				System.out.println("Error - chon loai banh my: "+e);
@@ -83,7 +83,7 @@ public class BanhMyTrung extends BanhMy{
 	
 	public void addMaterial() {
 		int choseMenuOption = -1;
-		Integer arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+		Integer arr[] = {1, 2, 3, 4, 5, 6};
 		ArrayList<Integer> eMenuOption = new ArrayList<>(Arrays.asList(arr));
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -94,9 +94,7 @@ public class BanhMyTrung extends BanhMy{
 				System.out.println("3. Cha bo");
 				System.out.println("4. Nem");
 				System.out.println("5. Thit");
-				System.out.println("6. Ca hoi");
-				System.out.println("7. Rau");
-				System.out.println("8. Gia vi");
+				System.out.println("6. Trung chien");
 				choseMenuOption = Integer.parseInt(br.readLine());
 			} while (!eMenuOption.contains(new Integer(choseMenuOption)));
 			
@@ -169,7 +167,7 @@ public class BanhMyTrung extends BanhMy{
 				break;
 
 			case 6:
-				materialNew = new Material("Ca_hoi", 5 );
+				materialNew = new Material("Trung chien", 5 );
 				if(this.getListMaterial() != null) {
 					if(this.checkMaterial(materialNew)) break;
 					temp = new ArrayList<Material>(this.getListMaterial());
@@ -181,31 +179,6 @@ public class BanhMyTrung extends BanhMy{
 				this.setListMaterial(temp);
 				break;
 
-			case 7:
-				materialNew = new Material("Rau", 1 );
-				if(this.getListMaterial() != null) {
-					if(this.checkMaterial(materialNew)) break;
-					temp = new ArrayList<Material>(this.getListMaterial());;
-				}else {
-					
-					temp = new ArrayList<Material>();
-				}
-				temp.add(materialNew);
-				this.setListMaterial(temp);
-				break;
-
-			case 8:
-				materialNew = new Material("Gia_vi", 1 );
-				if(this.getListMaterial() != null) {
-					if(this.checkMaterial(materialNew)) break;
-					temp = new ArrayList<Material>(this.getListMaterial());
-				}else {
-				
-					temp = new ArrayList<Material>();
-				}
-				temp.add(materialNew);
-				this.setListMaterial(temp);
-				break;
 			}
 			
 		} catch (IOException e) {
@@ -224,7 +197,7 @@ public class BanhMyTrung extends BanhMy{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			do {
 				System.out.println("---------------------------------------------");
-				System.out.println("Ban da mua 'Banh_My_Trung'. Ban co muon: ");
+				System.out.println("Ban da mua 'Banh_My_Ca'. Ban co muon: ");
 				System.out.println("1. Mua them mon khac khong?");
 				System.out.println("2. Bo ra mon nao khong?");
 				System.out.println("3. Xac nhan mua");

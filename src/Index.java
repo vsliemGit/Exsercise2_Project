@@ -38,7 +38,7 @@ public class Index {
 			}
 			
 		} catch (IOException e) {
-			System.out.println("Error: "+e);
+			System.out.println("Error - man hinh chinh: "+e);
 		}
 	}
 	
@@ -72,7 +72,10 @@ public class Index {
 				System.out.println(bread.toString());
 				break;
 			case 2:
-				System.out.println("ban mua banh my trung");
+				BanhMy breadTrung = new BanhMyTrung();
+				breadTrung.buy();
+				System.out.println("Ban da mua thanh cong!");
+				System.out.println(breadTrung.toString());
 				break;
 			case 3:
 				System.out.println("ban mua banh my thi");
@@ -85,7 +88,7 @@ public class Index {
 		        break;
 		     }
 		} catch (IOException e) {
-			System.out.println("Error: "+e);
+			System.out.println("Error - chon loai banh my: "+e);
 		}
 	}
 

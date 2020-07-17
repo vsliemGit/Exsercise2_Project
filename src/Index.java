@@ -13,12 +13,15 @@ public class Index {
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			do {
-				System.out.println("---------------------------------------------");
-				System.out.println("Xin chao den voi ung dung ban banh my: ");
-				System.out.println("1. Mua banh my");
-				System.out.println("2. In danh sach da ban");
-				System.out.println("3. Thoat");
-				System.out.println("---------------------------------------------");
+				System.out.println("+-------------------------------------------+");
+				System.out.println("|           UNG DUNG BAN BANH MY            |");
+				System.out.println("+-------------------------------------------+");
+				System.out.println("|     1. Mua banh my                        |");
+				System.out.println("+-------------------------------------------+");
+				System.out.println("|     2. In danh sach da ban                |");
+				System.out.println("+-------------------------------------------+");
+				System.out.println("|     3. Thoat                              |");
+				System.out.println("+-------------------------------------------+");
 				System.out.print("\n\nMoi chon: ");
 				
 				choseMenuOption = Integer.parseInt(br.readLine());
@@ -50,14 +53,19 @@ public class Index {
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			do {
-				System.out.println("---------------------------------------------");
-				System.out.println("Ban muon mua banh my loai nao: ");
-				System.out.println("1. Banh my khong");
-				System.out.println("2. Banh my trung");
-				System.out.println("3. Banh my thit");
-				System.out.println("4. Banh my ca");
-				System.out.println("5. Banh my tu chon");
-				System.out.println("---------------------------------------------");
+				System.out.println("+-------------------------------------------+");
+				System.out.println("|  Ban muon mua banh my loai nao:           |");
+				System.out.println("+-------------------------------------------+");
+				System.out.println("|      1. Banh my khong                     |");
+				System.out.println("+-------------------------------------------+");
+				System.out.println("|      2. Banh my trung                     |");
+				System.out.println("+-------------------------------------------+");
+				System.out.println("|      3. Banh my thit                      |");
+				System.out.println("+-------------------------------------------+");
+				System.out.println("|      4. Banh my ca                        |");
+				System.out.println("+-------------------------------------------+");
+				System.out.println("|      5. Banh my tu chon                   |");
+				System.out.println("+-------------------------------------------+");
 				System.out.print("\n\nMoi chon: ");
 				
 				choseMenuOption = Integer.parseInt(br.readLine());

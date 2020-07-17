@@ -21,10 +21,10 @@ public class BanhMy extends Product{
 	
 	public String getListStringMaterials() {
 		ArrayList<Material> tempListMaterial = this.getListMaterial();
-		if(tempListMaterial!=null) {
-			String stringTempMaterial = this.getMaterials();
-			for (Material tempMaterial : tempListMaterial) {
-				stringTempMaterial += (", "+tempMaterial.getName());
+		if(tempListMaterial != null) {
+			String stringTempMaterial = tempListMaterial.get(0).getName();
+			for (int i=1; i < tempListMaterial.size(); i++) {
+				stringTempMaterial += ", "+tempListMaterial.get(i).getName();
 			}
 			return stringTempMaterial;
 		}

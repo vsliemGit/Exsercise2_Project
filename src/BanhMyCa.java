@@ -14,6 +14,8 @@ public class BanhMyCa extends BanhMy{
 		Material tempMaterial = new Material("Cha_hoi", 5);
 		ArrayList<Material> tempListMaterial = new ArrayList<Material>();
 		tempListMaterial.add(tempMaterial);
+		tempMaterial = new Material("Banh_my_khong", 8);
+		tempListMaterial.add(tempMaterial);
 		tempMaterial = new Material("Rau", 1);
 		tempListMaterial.add(tempMaterial);
 		tempMaterial = new Material("Gia_vi", 1);

@@ -34,6 +34,10 @@ public class Index {
 				break;
 			case 2:
 				System.out.println("Ban chon in danh sach");
+				ArrayList<BanhMy> listBreads = IOFile.loadFile();
+				for (BanhMy bread : listBreads) {
+					System.out.println(bread.toString());
+				}
 				break;
 			case 3:
 				System.exit(0);
@@ -78,6 +82,7 @@ public class Index {
 				bread.buy();
 				System.out.println("Ban da mua thanh cong!");
 				System.out.println(bread.toString());
+				IOFile.writeFile(bread);
 				break;
 			case 2:
 				BanhMy breadTrung = new BanhMyTrung();

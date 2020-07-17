@@ -1,12 +1,13 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BanhMy extends Product{
+public class BanhMy extends Product implements Serializable{
 
 	public BanhMy() {
 		this.setListMaterial(new ArrayList<Material>());

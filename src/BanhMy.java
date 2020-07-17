@@ -14,8 +14,42 @@ public class BanhMy extends Product{
 		this.setMaterials("Banh_my");
 		this.setPrice(8);
 		LocalDateTime now = LocalDateTime.now();  
-		this.setDateTime(now);
-		
+		this.setDateTime(now);	
+	}
+	
+	public String getListStringMaterials() {
+		ArrayList<Material> tempListMaterial = this.getListMaterial();
+		if(tempListMaterial!=null) {
+			String stringTempMaterial = this.getMaterials();
+			for (Material tempMaterial : tempListMaterial) {
+				stringTempMaterial += (", "+tempMaterial.getName());
+			}
+			return stringTempMaterial;
+		}
+		return this.getMaterials();
+	}
+	
+	public boolean checkMaterial(Material material) {
+		if(this.getListMaterial()!=null) {
+			for(Material materialCheck : this.getListMaterial()) {
+				if(materialCheck.getName().equals(material.getName())) 
+					return true;
+			}
+			return false;
+		}
+		return false;
+	}
+	
+	public int getPriceMaterial() {
+		ArrayList<Material> tempListMaterial = this.getListMaterial();
+		int tempPrice = this.getPrice();
+		if(tempListMaterial!=null) {
+			for (Material tempMaterial : tempListMaterial) {
+				tempPrice += tempMaterial.getPrice();
+			}
+			return tempPrice;
+		}
+		return tempPrice;
 	}
 	
 	public void buy() {
@@ -58,7 +92,8 @@ public class BanhMy extends Product{
 	}
 	
 	@Override
-	void addMaterial() {
+	
+	public void addMaterial() {
 		int choseMenuOption = -1;
 		Integer arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 		ArrayList<Integer> eMenuOption = new ArrayList<>(Arrays.asList(arr));
@@ -242,13 +277,17 @@ public class BanhMy extends Product{
 	}
 
 	@Override
-	void delMaterial() {
+	
+	public void delMaterial() {
 	
 	}
 
 	@Override
 	public String toString() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		return "Name product: "+ this.getNameProduct() + "  Materials: ["+ this.getMaterials()+"]" + " Price: " + this.getPrice()+ "k  Time: " + dtf.format(this.getDateTime());
+		return "Name product: "+ this.getNameProduct() + "  Materials: ["+ this.getListStringMaterials()+"]" + " Price: " + this.getPriceMaterial()+ "k  Time: " + dtf.format(this.getDateTime());
 	}
+	
+	
+	
 }

@@ -8,34 +8,11 @@ abstract class Product {
 	private ArrayList<Material> listMaterial;
 	private String materials;
 	private int count;
-
 	private int price;
 	private int totalPrice;
 
-	public Product() {}
-	public Product(int no, String nameProduct, LocalDateTime  dateTime, ArrayList<Material> listMaterial,
-			int totalPrice) {
-		super();
-		this.no = no;
-		this.nameProduct = nameProduct;
-		this.dateTime = dateTime;
-		this.listMaterial = listMaterial;
-		this.totalPrice = totalPrice;
-	}
-	
-	public boolean checkMaterial(Material material) {
-		if(this.getListMaterial()!=null) {
-			for(Material materialCheck : this.getListMaterial()) {
-				if(materialCheck.getName().equals(material.getName())) 
-					return true;
-			}
-			return false;
-		}
-		return false;
-	}
-	
-	abstract  void addMaterial();
-	abstract void delMaterial();
+	public abstract  void addMaterial();
+	public abstract void delMaterial();
 	
 	//Get,Set:
 	public int getNo() {

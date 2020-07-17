@@ -118,8 +118,14 @@ public class BanhMyThit extends BanhMy{
 				System.out.println("Ban them mon nao? ");
 				System.out.println("1. Trung chien");
 				System.out.println("2. Cha bong");
-				System.out.println("3. Cha lua");
-				System.out.println("4. Cha bo");
+				int tempNo = 3;
+				if (this.checkMaterial(new Material("Cha_bo", 1))) {
+					System.out.println(tempNo+". Cha lua");
+				}else {
+					
+					System.out.println(tempNo+". Cha bo");
+				}
+			
 				System.out.println("5. Nem");
 				System.out.println("6. Ca hoi");
 				choseMenuOption = Integer.parseInt(br.readLine());

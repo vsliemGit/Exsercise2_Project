@@ -28,21 +28,18 @@ public class IOFile {
 		
 		try {
 			FileInputStream fis = new FileInputStream(urlFile);
+			ObjectInputStream input = new ObjectInputStream(fis);
 			boolean cont = true;
 			while(cont) {
-				try (ObjectInputStream input = new ObjectInputStream(fis)){
-					BanhMy bm = (BanhMy) input.readObject();
+					BanhMy bm = (BanhMy)input.readObject();
 				    if (bm != null) {
 				    	tempList.add(bm);
 				    } else {
 				      cont = false;
 				    }
-				} catch (IOException e) {
-					// TODO: handle exception
-				}
 			}
 			System.out.println("Da doc het file");
-			
+			input.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

@@ -43,7 +43,8 @@ public class Index {
 			//Add material
 			switch (choseMenuOption) {
 			case 1:
-				buyBread();
+				int no = IOFile.readFromBinaryFile(filename).size();
+				buyBread(no);
 				break;
 			case 2:
 				System.out.println("+------------------------------------------------------------------------------------------------------+");
@@ -66,7 +67,7 @@ public class Index {
 		}	  
     }
     
-    public static void buyBread() {
+    public static void buyBread(int no) {
     	int choseMenuOption = -1;
 		Integer arr[] = {1, 2, 3, 4, 5, 6};
 		ArrayList<Integer> eMenuOption = new ArrayList<>(Arrays.asList(arr));
@@ -102,7 +103,7 @@ public class Index {
 			case 1:
 				bread = new BanhMy();
 				bread.setNameProduct("Banh_my_khong");
-
+				bread.setNo(no);
 				tempMaterial = new Material("Banh_my_khong", 8);
 				tempListMaterial.add(tempMaterial);
 				bread.setListMaterial(tempListMaterial);
@@ -118,7 +119,8 @@ public class Index {
 			case 2:
 				bread = new BanhMy();
 				bread.setNameProduct("Banh_my_trung");
-
+				bread.setNo(no);
+				
 				tempMaterial = new Material("Banh_my_khong", 8);
 				tempListMaterial.add(tempMaterial);
 				tempMaterial = new Material("Trung_chien", 5);
@@ -140,7 +142,8 @@ public class Index {
 			case 3:
 				bread = new BanhMy();
 				bread.setNameProduct("Banh_my_thit");
-
+				bread.setNo(no);
+				
 				tempMaterial = new Material("Banh_my_khong", 8);
 				tempListMaterial.add(tempMaterial);
 				tempListMaterial.add(bread.choseCha());
@@ -163,7 +166,8 @@ public class Index {
 			case 4:
 				bread = new BanhMy();
 				bread.setNameProduct("Banh_my_ca");
-
+				bread.setNo(no);
+				
 				tempMaterial = new Material("Banh_my_khong", 8);
 				tempListMaterial.add(tempMaterial);
 				tempMaterial = new Material("Ca_hoi", 5);
@@ -185,10 +189,9 @@ public class Index {
 			case 5:
 				bread = new BanhMy();
 				bread.setNameProduct("Banh_my_tu_chon");
-			
-				bread.buy();
+				bread.setNo(no);
 				
-				bread.getListStringMaterials();
+				bread.buy();
 				System.out.println(bread.toString());
 				
 				IOFile.writeToBinary(filename, bread, true);

@@ -9,7 +9,8 @@ import java.util.Arrays;
 
 public class BanhMy implements Serializable, Comparable<BanhMy>{
 	
-	private static int no = 0;
+	public static int stt = 0;
+	private int no;
 	private String nameProduct;
 	private LocalDateTime dateTime;
 	private ArrayList<Material> listMaterial;
@@ -19,6 +20,7 @@ public class BanhMy implements Serializable, Comparable<BanhMy>{
 	private int totalPrice;
 	
 	public BanhMy() {
+		
 		//Set time
 		LocalDateTime now = LocalDateTime.now();  
 		this.setDateTime(now);	
@@ -147,10 +149,12 @@ public class BanhMy implements Serializable, Comparable<BanhMy>{
 				}
 			}
 			else {
-				System.out.print("Ban muon mua voi so luong bao nhieu?  ");
-				int tempChose = Integer.parseInt(br.readLine());
-				this.setCount(tempChose);
-				this.getListStringMaterials();
+				if( this.getListMaterial()!= null && this.getListMaterial().size()>0) {
+					System.out.print("Ban muon mua voi so luong bao nhieu?  ");
+					int tempChose = Integer.parseInt(br.readLine());
+					this.setCount(tempChose);
+					this.getListStringMaterials();
+				}else this.buy();
 				return;
 			}
 		} catch (IOException e) {
@@ -410,8 +414,8 @@ public class BanhMy implements Serializable, Comparable<BanhMy>{
 		this.getListStringMaterials();
 		this.setTotalPrice(this.getPriceMaterial()*this.count);
 		String temp = new String("--------------------------------------------------------------------------------------------------------");
-		return temp+"\n   Name product: "+ this.getNameProduct() + "  Materials: ["+ this.getMaterials()+"]\n" + "   Price one bread: "
-				+ this.getPriceMaterial() + " Count: " + this.getCount() + " Total price: " + this.getTotalPrice()
+		return temp+"\n  N0."+this.getNo()+"   Name product: "+ this.getNameProduct() + "  Materials: ["+ this.getMaterials()+"]\n" + "  Price one bread: "
+				+ this.getPriceMaterial() + "k Count: " + this.getCount() + " Total price: " + this.getTotalPrice()
 				+ "k  Time: " + dtf.format(this.getDateTime());
 		
 	}

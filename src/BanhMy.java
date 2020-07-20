@@ -20,7 +20,7 @@ public class BanhMy implements Serializable, Comparable<BanhMy>{
 	private int totalPrice;
 	
 	public BanhMy() {
-		
+	        this.setListMaterial(new ArrayList<Material>());
 		//Set time
 		LocalDateTime now = LocalDateTime.now();  
 		this.setDateTime(now);	
@@ -126,22 +126,26 @@ public class BanhMy implements Serializable, Comparable<BanhMy>{
 			if(choseMenuOption1==1) {
 				int choseOption2 = 0;
 				while(choseOption2 == 0){
-				        if (this.getListMaterial().size()>7) {
+				        
+				        if(this.getListMaterial().size()>7) {
                                             System.out.println("Chi duoc mua toi da 8 thanh phan!");
+                                            choseOption2 = 1; 
                                             this.buy();
+                                        }else {
+                                            this.addMaterial();
+                                            System.out.println("---------------------------------------------");
+                                            System.out.println("Ban co muon them nua khong: ");
+                                            System.out.println("1. Co");
+                                            System.out.println("2. Khong");
+                                            System.out.println("---------------------------------------------");
+                                            System.out.print("\n\nMoi chon: ");
+                                            int tempChose = Integer.parseInt(br.readLine());
+                                            if(tempChose == 2 ) {
+                                                    choseOption2 = 1; 
+                                                    this.buy();
+                                            }
                                         }
-					this.addMaterial();
-					System.out.println("---------------------------------------------");
-					System.out.println("Ban co muon them nua khong: ");
-					System.out.println("1. Co");
-					System.out.println("2. Khong");
-					System.out.println("---------------------------------------------");
-					System.out.print("\n\nMoi chon: ");
-					int tempChose = Integer.parseInt(br.readLine());
-					if(tempChose == 2 ) {
-						choseOption2 = 1; 
-						this.buy();
-					}
+					
 				}	
 			}
 			else if(choseMenuOption1==2) {

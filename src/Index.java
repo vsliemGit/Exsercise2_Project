@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class Index {
 	private static String filename = "D:\\myObjects.txt";
@@ -14,8 +13,6 @@ public class Index {
     	while (true) {	
 			loadIndex();
 		}
-    	
-    	
     }
     
     public static void loadIndex() {

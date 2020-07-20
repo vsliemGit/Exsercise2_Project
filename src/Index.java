@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Index {
-	private static String filename = "myObjects.txt";
+	private static String filename = "D:\\myObjects.txt";
 	
     public static void main(String[] args) {
 
@@ -51,7 +51,7 @@ public class Index {
 				System.out.println("|                               DANH SACH DA BAN                                                       |");
 				
 				ArrayList<BanhMy> listBreads = IOFile.readFromBinaryFile(filename);
-		    	Collections.sort(listBreads);
+		    	        Collections.sort(listBreads);
 				for (BanhMy bread : listBreads) {
 					System.out.println(bread.toString());
 				}

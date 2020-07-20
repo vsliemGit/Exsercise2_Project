@@ -126,6 +126,10 @@ public class BanhMy implements Serializable, Comparable<BanhMy>{
 			if(choseMenuOption1==1) {
 				int choseOption2 = 0;
 				while(choseOption2 == 0){
+				        if (this.getListMaterial().size()>7) {
+                                            System.out.println("Chi duoc mua toi da 8 thanh phan!");
+                                            this.buy();
+                                        }
 					this.addMaterial();
 					System.out.println("---------------------------------------------");
 					System.out.println("Ban co muon them nua khong: ");
@@ -171,13 +175,8 @@ public class BanhMy implements Serializable, Comparable<BanhMy>{
 		if(this.getListMaterial()==null) {
 			this.setListMaterial(new ArrayList<Material>());
 		}
+					
 		
-		//Get listMaterial to temple
-		ArrayList<Material> tempListMaterial = this.getListMaterial();
-				
-				
-		//Get size material and in_it arrChoseOption
-		int sizeListMaterial = tempListMaterial.size();
 		Integer arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 		ArrayList<Integer> eMenuOption = new ArrayList<>(Arrays.asList(arr));
 		try {
